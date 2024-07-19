@@ -3,13 +3,13 @@ package cli
 import (
 	"encoding/json"
 	"fmt"
-	_ "image/jpeg"
 	"net/http"
 	"net/url"
 
 	"github.com/charmbracelet/lipgloss"
-	"github.com/matthiashermsen/kevin-chromik-minihackathon-2024-challange-3/cfg"
 	"github.com/spf13/cobra"
+
+	"github.com/matthiashermsen/kevin-chromik-minihackathon-2024-challange-3/cfg"
 )
 
 var yearOfReleaseFlag string
@@ -85,7 +85,7 @@ var SearchCommand = &cobra.Command{
 		}
 
 		for _, result := range searchAPIResponse.Results {
-			dialogBoxStyle := lipgloss.NewStyle().
+			boxStyle := lipgloss.NewStyle().
 				Border(lipgloss.RoundedBorder()).
 				BorderForeground(lipgloss.Color("#874BFD")).
 				Background(lipgloss.Color("#000000")).
@@ -103,7 +103,7 @@ var SearchCommand = &cobra.Command{
 			posterReferenceStyle := lipgloss.NewStyle().Foreground(lipgloss.Color("#898989"))
 			moreInformationSuggestionStyle := lipgloss.NewStyle().Foreground(lipgloss.Color("#96ffec")).MarginTop(1)
 
-			fmt.Println(dialogBoxStyle.Render(fmt.Sprintf(
+			fmt.Println(boxStyle.Render(fmt.Sprintf(
 				"%s\n%s\n%s\n%s\n%s",
 				titleStyle.Render(result.Title),
 				typeAndYearStyle.Render(fmt.Sprintf("%s | %s", result.Type, result.Year)),
