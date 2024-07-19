@@ -1,0 +1,26 @@
+name: QA
+
+on: pull_request
+
+jobs:
+  qa:
+    name: QA
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.22.x
+
+      - name: Analyze code
+        run: make analyze
+
+      - name: Run tests
+        run: make test
+
+      - name: Build for platforms
+        run: make build-all

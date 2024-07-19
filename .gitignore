@@ -1,0 +1,12 @@
+# OS
+.DS_Store
+
+# Editors and IDEs
+.idea
+.vscode
+
+# Build
+build/
+
+# Coverage
+coverage/
